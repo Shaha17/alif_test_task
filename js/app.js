@@ -79,7 +79,7 @@ function renderPhoneInput(parentElement, phoneNumber) {
     parentElement.appendChild(numberDivEl);
 
     const phoneInputEl = document.createElement('input');
-    phoneInputEl.type = 'tel';
+    phoneInputEl.type = 'number';
     phoneInputEl.placeholder = 'Телефон';
     if (phoneNumber) {
         phoneInputEl.value = phoneNumber;
@@ -205,6 +205,7 @@ messageEl.textContent = '';
 contactView.insertBefore(messageEl, contactView.firstElementChild);
 
 const addBtn = document.createElement('button');
+addBtn.type = 'submit';
 addBtn.textContent = 'Сохранить контакт';
 contactAddForm.appendChild(addBtn);
 
@@ -218,7 +219,7 @@ addBtn.onclick = evt => {
     const surname = surnameInputEl.value.trim();
 
     const numbers = [];
-    const numberNodes = phoneNumberListEl.querySelectorAll('[type="tel"]');
+    const numberNodes = phoneNumberListEl.querySelectorAll('[type="number"]');
     for (const node of numberNodes) {
         const num = inputCheck(node);
         if (!num) {
@@ -287,6 +288,7 @@ contactEditForm.appendChild(addEditEmailBtn);
 
 const saveEditBtn = document.createElement('button');
 saveEditBtn.textContent = 'Сохранить изменения';
+saveEditBtn.type = 'submit';
 contactEditForm.appendChild(saveEditBtn);
 saveEditBtn.onclick = evt => {
     evt.preventDefault();
@@ -301,7 +303,7 @@ saveEditBtn.onclick = evt => {
 
     const editedNumbers = [];
     const editedNumberNodes = phoneNumberEditListEl.querySelectorAll(
-        '[type="tel"]'
+        '[type="number"]'
     );
     for (const node of editedNumberNodes) {
         const num = inputCheck(node);
