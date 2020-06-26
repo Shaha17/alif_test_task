@@ -231,6 +231,11 @@ addBtn.onclick = evt => {
     const emails = [];
     const emailNodes = emailListEl.querySelectorAll('[type="email"]');
     for (const node of emailNodes) {
+        if (node.validity.typeMismatch) {
+            messageEl.textContent = 'Почта введена неправильно';
+            node.focus();
+            return;
+        }
         const email = inputCheck(node);
         if (!email) {
             return;
@@ -316,6 +321,11 @@ saveEditBtn.onclick = evt => {
     const editedEmails = [];
     const editedEmailNodes = emailEditListEl.querySelectorAll('[type="email"]');
     for (const node of editedEmailNodes) {
+        if (node.validity.typeMismatch) {
+            messageEl.textContent = 'Почта введена неправильно';
+            node.focus();
+            return;
+        }
         const email = inputCheck(node);
         if (!email) {
             return;
